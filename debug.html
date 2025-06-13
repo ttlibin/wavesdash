@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - WAVE⚡DASH</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+        .debug-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #2a2a2a;
+            border-radius: 8px;
+        }
+        button {
+            background: #00ff88;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        pre {
+            background: #333;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐛 WAVE⚡DASH Debug Page</h1>
+    
+    <div class="debug-section">
+        <h2>📋 SessionStorage 测试</h2>
+        <button onclick="testSessionStorage()">测试 SessionStorage</button>
+        <button onclick="clearSessionStorage()">清空 SessionStorage</button>
+        <pre id="sessionOutput">点击按钮开始测试...</pre>
+    </div>
+    
+    <div class="debug-section">
+        <h2>🎮 游戏数据测试</h2>
+        <button onclick="testGameData()">测试游戏数据</button>
+        <button onclick="simulateGameClick()">模拟点击 Wave Dash</button>
+        <pre id="gameDataOutput">点击按钮开始测试...</pre>
+    </div>
+    
+    <div class="debug-section">
+        <h2>🔗 跳转测试</h2>
+        <button onclick="testNavigation()">测试跳转到游戏页面</button>
+        <button onclick="backToIndex()">返回主页</button>
+    </div>
+
+    <script>
+        // Import game data for testing
+        const testGameData = [
+            {
+                id: 3,
+                title: "Wave Dash",
+                description: "Jump and fly your way through danger in this rhythm-based action platformer!",
+                category: "wave-dash",
+                thumb: "images/wave-dash.svg",
+                iframeUrl: "https://www.miniplay.com/embed/wave-dash",
+                tags: ["platformer", "rhythm", "challenging"],
+                rating: 4.7
+            }
+        ];
+
+        function testSessionStorage() {
+            const output = document.getElementById('sessionOutput');
+            let result = "=== SessionStorage 测试结果 ===\n\n";
+            
+            // Test write
+            const testData = { test: "Hello World", timestamp: Date.now() };
+            sessionStorage.setItem('debugTest', JSON.stringify(testData));
+            result += "✓ 写入测试数据成功\n";
+            
+            // Test read
+            const readData = sessionStorage.getItem('debugTest');
+            if (readData) {
+                result += "✓ 读取测试数据成功: " + readData + "\n";
+            } else {
+                result += "✗ 读取测试数据失败\n";
+            }
+            
+            // Check current game data
+            const currentGame = sessionStorage.getItem('currentGame');
+            if (currentGame) {
+                result += "\n📦 当前游戏数据:\n" + currentGame + "\n";
+                try {
+                    const parsed = JSON.parse(currentGame);
+                    result += "\n✓ 数据解析成功\n";
+                    result += "游戏ID: " + parsed.id + "\n";
+                    result += "游戏标题: " + parsed.title + "\n";
+                } catch (e) {
+                    result += "\n✗ 数据解析失败: " + e.message + "\n";
+                }
+            } else {
+                result += "\n📦 当前游戏数据: 无\n";
+            }
+            
+            output.textContent = result;
+        }
+
+        function clearSessionStorage() {
+            sessionStorage.clear();
+            testSessionStorage();
+        }
+
+        function testGameData() {
+            const output = document.getElementById('gameDataOutput');
+            let result = "=== 游戏数据测试结果 ===\n\n";
+            
+            // Test game data structure
+            const waveGame = testGameData[0];
+            result += "📊 Wave Dash 游戏数据:\n";
+            result += JSON.stringify(waveGame, null, 2) + "\n\n";
+            
+            // Test sessionStorage with game data
+            sessionStorage.setItem('currentGame', JSON.stringify(waveGame));
+            result += "✓ 游戏数据已存储到 sessionStorage\n";
+            
+            output.textContent = result;
+        }
+
+        function simulateGameClick() {
+            const output = document.getElementById('gameDataOutput');
+            let result = "=== 模拟游戏点击 ===\n\n";
+            
+            const gameId = 3;
+            const waveGame = testGameData.find(g => g.id == gameId);
+            
+            if (waveGame) {
+                result += "✓ 找到游戏: " + waveGame.title + "\n";
+                
+                // Store in sessionStorage
+                sessionStorage.setItem('currentGame', JSON.stringify(waveGame));
+                result += "✓ 数据已存储到 sessionStorage\n";
+                
+                // Verify storage
+                const stored = sessionStorage.getItem('currentGame');
+                if (stored) {
+                    result += "✓ 验证存储成功\n";
+                    result += "存储的数据: " + stored + "\n";
+                } else {
+                    result += "✗ 验证存储失败\n";
+                }
+            } else {
+                result += "✗ 找不到游戏 ID: " + gameId + "\n";
+            }
+            
+            output.textContent = result;
+        }
+
+        function testNavigation() {
+            // First store the game data
+            simulateGameClick();
+            
+            // Wait a moment then navigate
+            setTimeout(() => {
+                window.location.href = 'game.html?id=3';
+            }, 1000);
+        }
+
+        function backToIndex() {
+            window.location.href = 'index.html';
+        }
+
+        // Auto-test on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            testSessionStorage();
+        });
+    </script>
+</body>
+</html> 

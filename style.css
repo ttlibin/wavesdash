@@ -1,0 +1,870 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* 导航栏样式 */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo样式 */
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo:hover {
+    text-decoration: none;
+}
+
+.wave {
+    color: #4a90e2;
+}
+
+.lightning {
+    color: #ffd700;
+    font-size: 2.2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.lightning:hover {
+    color: #00bfff;
+    text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
+    animation: lightning-flicker 0.5s ease-in-out;
+}
+
+@keyframes lightning-flicker {
+    0%, 100% { opacity: 1; }
+    25% { opacity: 0.7; }
+    50% { opacity: 1; }
+    75% { opacity: 0.8; }
+}
+
+.dash {
+    color: #764ba2;
+}
+
+/* 搜索框样式 */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 25px;
+    padding: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 400px;
+    margin: 0 2rem;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    flex: 1;
+    background: transparent;
+}
+
+.search-btn {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background: #357abd;
+    transform: scale(1.05);
+}
+
+/* 移动端菜单按钮 */
+.mobile-menu-btn {
+    display: none;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* 主容器 */
+.main-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 2rem auto;
+    gap: 2rem;
+    padding: 0 2rem;
+    min-height: calc(100vh - 200px);
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    width: 70px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 1.5rem 0.5rem;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transition: width 0.3s ease, padding 0.3s ease;
+    overflow: hidden;
+}
+
+.sidebar:hover {
+    width: 250px;
+    padding: 1.5rem;
+}
+
+.sidebar-header {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.sidebar:hover .sidebar-header {
+    opacity: 1;
+}
+
+.sidebar-header h3 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.category-list {
+    list-style: none;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    justify-content: flex-start;
+}
+
+.category-item:hover {
+    background: linear-gradient(135deg, #4a90e2, #667eea);
+    color: white;
+    transform: translateX(5px);
+}
+
+.category-item.active {
+    background: linear-gradient(135deg, #764ba2, #667eea);
+    color: white;
+}
+
+.category-item i {
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    margin-right: 0;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: margin-right 0.3s ease;
+}
+
+.sidebar:hover .category-item i {
+    margin-right: 1rem;
+}
+
+/* 彩色图标样式 */
+.category-item[data-category="all"] i { color: #4a90e2; }
+.category-item[data-category="new"] i { color: #ffd700; }
+.category-item[data-category="trending"] i { color: #ff6b6b; }
+.category-item[data-category="geometry-dash"] i { color: #00d4ff; }
+.category-item[data-category="skill"] i { color: #9b59b6; }
+.category-item[data-category="multiplayer"] i { color: #2ecc71; }
+.category-item[data-category="2player"] i { color: #3498db; }
+.category-item[data-category="action"] i { color: #e74c3c; }
+.category-item[data-category="adventure"] i { color: #27ae60; }
+.category-item[data-category="girls"] i { color: #e91e63; }
+.category-item[data-category="card"] i { color: #795548; }
+.category-item[data-category="horror"] i { color: #607d8b; }
+.category-item[data-category="io"] i { color: #ff9800; }
+.category-item[data-category="mahjong"] i { color: #4caf50; }
+.category-item[data-category="minecraft"] i { color: #8bc34a; }
+.category-item[data-category="puzzle"] i { color: #ff5722; }
+.category-item[data-category="shooting"] i { color: #f44336; }
+.category-item[data-category="sports"] i { color: #009688; }
+.category-item[data-category="tower-defense"] i { color: #673ab7; }
+
+/* 悬停时图标变白色 */
+.category-item:hover i,
+.category-item.active i {
+    color: white !important;
+}
+
+.category-name {
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.sidebar:hover .category-name {
+    opacity: 1;
+}
+
+/* 主内容区域 */
+.main-content {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.content-header h1 {
+    color: #333;
+    font-size: 2rem;
+}
+
+.game-count {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* 加载动画 */
+.loading {
+    text-align: center;
+    padding: 4rem 0;
+    color: #666;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #4a90e2;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 游戏网格 */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.game-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.game-thumb {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+}
+
+.game-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover .game-thumb img {
+    transform: scale(1.05);
+}
+
+/* 游戏覆盖层样式 - 修复点击问题 */
+.game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* 关键！让点击事件穿透 */
+}
+
+.game-card:hover .game-overlay {
+    opacity: 1;
+}
+
+.game-overlay i {
+    color: white;
+    font-size: 2rem;
+}
+
+.game-info-card {
+    padding: 1rem;
+}
+
+.game-info-card h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.3;
+}
+
+.game-info-card .game-category {
+    color: #4a90e2;
+    font-size: 0.8rem;
+    background: rgba(74, 144, 226, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+/* 无结果样式 */
+.no-results {
+    text-align: center;
+    padding: 4rem 0;
+    color: #666;
+}
+
+.no-results i {
+    font-size: 4rem;
+    color: #ddd;
+    margin-bottom: 1rem;
+}
+
+/* 游戏页面样式 */
+.game-page {
+    background: #1a1a1a;
+    color: white;
+}
+
+.game-header {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.game-nav {
+    max-width: 1400px; /* 与游戏容器保持一致 */
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back-btn {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #357abd;
+    transform: translateX(-5px);
+}
+
+.game-title-nav h1 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.game-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.fullscreen-btn, .refresh-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fullscreen-btn:hover, .refresh-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 主要游戏容器 - 桌面版 */
+.game-container {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 820px; /* 调整为适应768px高度的iframe */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    /* 保证和下方信息区对齐 */
+}
+
+#game-iframe, #gameFrame {
+    display: block !important; /* 强制显示，覆盖内联样式 */
+    width: 1024px !important; /* 桌面版更大尺寸，保持4:3比例 */
+    height: 768px !important; /* 桌面版更大尺寸，保持4:3比例 */
+    max-width: 100%;
+    margin: 0 auto;
+    background: #222;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    border: none;
+}
+
+/* 全屏模式样式 */
+.game-container.fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    min-height: 100vh !important;
+    z-index: 9999 !important;
+    background: black !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.game-container.fullscreen #game-iframe,
+.game-container.fullscreen #gameFrame {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    background: black !important;
+}
+
+/* 全屏时隐藏其他元素 */
+body.fullscreen-active {
+    overflow: hidden;
+}
+
+body.fullscreen-active .game-header,
+body.fullscreen-active .game-info,
+body.fullscreen-active .footer {
+    display: none;
+}
+
+.game-loading {
+    text-align: center;
+    color: white;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid #4a90e2;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+.game-error {
+    text-align: center;
+    color: white;
+}
+
+.game-error i {
+    font-size: 3rem;
+    color: #ff4444;
+    margin-bottom: 1rem;
+}
+
+.retry-btn {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+/* 游戏信息区域 */
+.game-info {
+    max-width: 1400px; /* 与游戏容器保持一致 */
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.game-details {
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.game-header-info {
+    margin-bottom: 2rem;
+}
+
+.game-header-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.game-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.game-category {
+    background: #4a90e2;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.game-rating {
+    color: #ffd700;
+}
+
+.game-description, .game-instructions {
+    margin-bottom: 2rem;
+}
+
+.game-description h3, .game-instructions h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* 相关游戏 */
+.related-games {
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 2rem;
+    border-radius: 15px;
+    height: fit-content;
+}
+
+.related-games h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.related-games-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.related-game-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.related-game-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.related-game-thumb {
+    width: 60px;
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-right: 1rem;
+}
+
+.related-game-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.related-game-info h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.related-game-info span {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* 页脚 */
+.footer {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .search-container {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .main-container {
+        flex-direction: column;
+        padding: 0 1rem;
+        gap: 1rem;
+    }
+    
+    .sidebar {
+        width: 100%;
+        position: static;
+        order: 2;
+        padding: 1rem;
+    }
+    
+    .sidebar.mobile-hidden {
+        display: none;
+    }
+    
+    .sidebar .category-name {
+        opacity: 1;
+    }
+    
+    .sidebar .category-item i {
+        margin-right: 1rem;
+    }
+    
+    .sidebar .sidebar-header {
+        opacity: 1;
+    }
+    
+    .main-content {
+        order: 1;
+        padding: 1.5rem;
+    }
+    
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .content-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+    
+    .game-nav {
+        padding: 0 1rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .game-title-nav h1 {
+        font-size: 1.2rem;
+    }
+    
+    .game-info {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+    
+    .game-details, .related-games {
+        padding: 1.5rem;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .lightning {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        margin: 1rem auto;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+    
+    .game-container {
+        min-height: 360px; /* 小屏幕适应300px iframe高度 */
+    }
+    
+    #game-iframe, #gameFrame {
+        width: 400px !important; /* 小屏幕增大尺寸，保持4:3比例 */
+        height: 300px !important; /* 小屏幕增大尺寸，保持4:3比例 */
+        max-width: 100%;
+    }
+    
+    .category-item {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .category-name {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .game-container, .game-info {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .game-container {
+        min-height: 660px; /* 中等屏幕适应600px高度 */
+    }
+    
+    #game-iframe, #gameFrame {
+        width: 800px !important; /* 中等屏幕增大尺寸，保持4:3比例 */
+        height: 600px !important; /* 中等屏幕增大尺寸，保持4:3比例 */
+        max-width: 100%;
+    }
+    
+    .game-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 平滑过渡 */
+* {
+    transition: all 0.3s ease;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(74, 144, 226, 0.5);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(74, 144, 226, 0.8);
+} 

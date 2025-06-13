@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Game - WAVE⚡DASH</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="games.js"></script>
+    <script src="categories.js"></script>
+    <script src="config.js"></script>
+</head>
+<body>
+    <!-- Game Navigation -->
+    <nav class="game-nav">
+        <div class="game-nav-left">
+            <button class="back-btn" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+                Back to Games
+            </button>
+        </div>
+        <div class="game-title-nav">
+            <h1 id="gameTitle">Loading Game...</h1>
+        </div>
+        <div class="game-nav-right">
+            <button class="fullscreen-btn" onclick="toggleFullscreen()">
+                <i class="fas fa-expand"></i>
+                Fullscreen
+            </button>
+        </div>
+    </nav>
+
+    <!-- Game Container -->
+    <div class="game-container">
+        <div class="game-wrapper" id="gameWrapper">
+            <div class="game-loading" id="gameLoading">
+                <div class="loading-spinner"></div>
+                <p>Loading game, please wait...</p>
+            </div>
+            <iframe 
+                id="gameFrame"
+                src="" 
+                frameborder="0" 
+                allowfullscreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                style="display: none;">
+            </iframe>
+            <div class="game-error" id="gameError" style="display: none;">
+                <div class="error-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3>Failed to load game</h3>
+                <p>The game could not be loaded. Please try refreshing the page or select another game.</p>
+                <button class="retry-btn" onclick="retryGame()">
+                    <i class="fas fa-redo"></i>
+                    Retry
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Information Section -->
+    <section class="game-info">
+        <div class="game-details">
+            <h2 id="gameDetailsTitle">Game Details</h2>
+            <div class="game-meta">
+                <span class="game-category" id="gameCategory">Loading...</span>
+                <span class="game-rating">
+                    <i class="fas fa-star"></i>
+                    <span id="gameRating">4.5</span>
+                </span>
+            </div>
+            <p class="game-description" id="gameDescription">
+                Loading game description...
+            </p>
+            <div class="game-tags" id="gameTags">
+                <!-- Tags will be added dynamically -->
+            </div>
+        </div>
+
+        <div class="related-games">
+            <h3>You Might Also Like</h3>
+            <div class="related-games-grid" id="relatedGamesGrid">
+                <!-- Related games will be added dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">wavesdash.com</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Privacy</a>
+                    <a href="#" class="footer-link">Terms</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WavesDash. All rights reserved. Play games online for free!</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="game.js"></script>
+</body>
+</html> 

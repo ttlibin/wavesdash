@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAVE⚡DASH - Free Online Games Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="games.js"></script>
+    <script src="categories.js"></script>
+    <script src="config.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    WAVE<span class="lightning">⚡</span>DASH
+                </a>
+            </div>
+            <div class="nav-center">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search for games..." class="search-input">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="nav-right">
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Game Categories</h3>
+            </div>
+            <nav class="category-list">
+                <div class="category-item active" data-category="all">
+                    <i class="fas fa-home"></i>
+                    <span class="category-name">All Games</span>
+                </div>
+                <div class="category-item" data-category="new">
+                    <i class="fas fa-star"></i>
+                    <span class="category-name">New Games</span>
+                </div>
+                <div class="category-item" data-category="trending">
+                    <i class="fas fa-fire"></i>
+                    <span class="category-name">Trending</span>
+                </div>
+                <div class="category-item" data-category="geometry-dash">
+                    <i class="fas fa-cube"></i>
+                    <span class="category-name">Geometry Dash</span>
+                </div>
+                <div class="category-item" data-category="skill">
+                    <i class="fas fa-brain"></i>
+                    <span class="category-name">Skill Games</span>
+                </div>
+                <div class="category-item" data-category="multiplayer">
+                    <i class="fas fa-users"></i>
+                    <span class="category-name">Multiplayer</span>
+                </div>
+                <div class="category-item" data-category="2player">
+                    <i class="fas fa-user-friends"></i>
+                    <span class="category-name">2 Player</span>
+                </div>
+                <div class="category-item" data-category="action">
+                    <i class="fas fa-fist-raised"></i>
+                    <span class="category-name">Action</span>
+                </div>
+                <div class="category-item" data-category="adventure">
+                    <i class="fas fa-map"></i>
+                    <span class="category-name">Adventure</span>
+                </div>
+                <div class="category-item" data-category="girls">
+                    <i class="fas fa-heart"></i>
+                    <span class="category-name">Girls Games</span>
+                </div>
+                <div class="category-item" data-category="card">
+                    <i class="fas fa-clubs"></i>
+                    <span class="category-name">Card Games</span>
+                </div>
+                <div class="category-item" data-category="horror">
+                    <i class="fas fa-ghost"></i>
+                    <span class="category-name">Horror</span>
+                </div>
+                <div class="category-item" data-category="io">
+                    <i class="fas fa-globe"></i>
+                    <span class="category-name">IO Games</span>
+                </div>
+                <div class="category-item" data-category="mahjong">
+                    <i class="fas fa-th"></i>
+                    <span class="category-name">Mahjong</span>
+                </div>
+                <div class="category-item" data-category="minecraft">
+                    <i class="fas fa-cubes"></i>
+                    <span class="category-name">Minecraft</span>
+                </div>
+                <div class="category-item" data-category="puzzle">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <span class="category-name">Puzzle</span>
+                </div>
+                <div class="category-item" data-category="shooting">
+                    <i class="fas fa-bullseye"></i>
+                    <span class="category-name">Shooting</span>
+                </div>
+                <div class="category-item" data-category="sports">
+                    <i class="fas fa-football-ball"></i>
+                    <span class="category-name">Sports</span>
+                </div>
+                <div class="category-item" data-category="tower-defense">
+                    <i class="fas fa-chess-rook"></i>
+                    <span class="category-name">Tower Defense</span>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1 id="contentTitle">All Games</h1>
+                <div class="game-stats">
+                    <span id="gameCount">0 games available</span>
+                </div>
+            </header>
+
+            <!-- Games Grid -->
+            <div class="games-grid" id="gamesGrid">
+                <!-- Games will be dynamically loaded here -->
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <div class="loading-spinner"></div>
+                <p>Loading amazing games...</p>
+            </div>
+
+            <!-- No Results State -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <div class="no-results-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>No games found</h3>
+                <p>Try searching with different keywords or browse our categories.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">wavesdash.com</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Privacy</a>
+                    <a href="#" class="footer-link">Terms</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WavesDash. All rights reserved. Play games online for free!</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + K for search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                document.getElementById('searchInput').focus();
+            }
+            
+            // ESC to clear search
+            if (e.key === 'Escape') {
+                const searchInput = document.getElementById('searchInput');
+                if (searchInput.value) {
+                    searchInput.value = '';
+                    searchInput.dispatchEvent(new Event('input'));
+                } else {
+                    searchInput.blur();
+                }
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const sidebar = document.querySelector('.sidebar');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('mobile-hidden');
+        });
+    </script>
+</body>
+</html> 
