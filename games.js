@@ -5,7 +5,7 @@ window.GAMES = [
     description: "Jump over obstacles in this fast-paced geometry-based platformer! Time your jumps perfectly to avoid spikes and reach the finish line.",
     category: "geometry-dash",
     thumb: "images/geometry-jump.png",
-    iframeUrl: "https://www.jopi.com/embed.php?game=geometry-jump",
+    iframeUrl: "https://1games.io/game/geometry-jump/",
     tags: ["platformer", "jumping", "geometry", "arcade", "challenging"],
     instructions: ["Click or spacebar to jump", "Time your jumps carefully", "Avoid spikes and obstacles", "Reach the end to complete level"],
     rating: 4.8,
