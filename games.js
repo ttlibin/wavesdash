@@ -142,5 +142,29 @@ window.GAMES = [
     instructions: ["Move to draw lines", "Return to your territory to claim area", "Avoid hitting other players' lines", "Expand your territory"],
     rating: 4.1,
     dateAdded: "2024-08-20"
+  },
+  {
+    id: 13,
+    title: "Geometry Dash Breeze",
+    description: "Experience a refreshing breeze of challenges in this smooth Geometry Dash level! Navigate through flowing obstacles with graceful movements.",
+    category: "geometry-dash",
+    thumb: "images/geometry-dash-breeze.jpg",
+    iframeUrl: "https://1games.io/game/geometry-dash-breeze/",
+    tags: ["geometry-dash", "breeze", "smooth", "flowing", "relaxing"],
+    instructions: ["Click or spacebar to jump", "Follow the gentle rhythm", "Navigate through wind-like obstacles", "Enjoy the smooth gameplay"],
+    rating: 4.6,
+    dateAdded: "2025-6-14"
+  },
+  {
+    id: 14,
+    title: "Geometry Dash World",
+    description: "Explore different worlds in this expanded Geometry Dash adventure! Travel through various themed levels with unique challenges.",
+    category: "geometry-dash",
+    thumb: "images/geometry-dash-world.png",
+    iframeUrl: "https://1games.io/game/geometry-dash-world/",
+    tags: ["geometry-dash", "world", "adventure", "themed", "exploration"],
+    instructions: ["Jump with spacebar or click", "Explore different world themes", "Master various level mechanics", "Unlock new worlds by progressing"],
+    rating: 4.6,
+    dateAdded: "2025-6-14"
   }
 ]; 
