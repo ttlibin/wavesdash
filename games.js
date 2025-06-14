@@ -25,7 +25,7 @@ window.GAMES = [
   },
   {
     id: 3,
-    title: "Geometry Dash",
+    title: "WAVE Dash",
     description: "Jump and fly your way through danger in this rhythm-based action platformer! Navigate through impossible levels with perfect timing.",
     category: "geometry-dash",
     thumb: "images/wave-dash.jpg",
