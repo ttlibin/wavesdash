@@ -1,128 +1,3 @@
-// 删除原有的games数组，直接用window.GAMES
-// Import game data (与script.js保持一致)
-const games = [
-    {
-        id: 1,
-        title: "Subway Surfers",
-        category: "action",
-        thumb: "images/placeholder.svg",
-        iframeUrl: "https://poki.com/en/g/subway-surfers",
-        description: "Run as fast as you can in this endless running game! Dodge trains, collect coins, and surf through colorful cities.",
-        instructions: ["Arrow keys or WASD to move", "Spacebar to jump", "Collect coins and power-ups"],
-        rating: 4.8
-    },
-    {
-        id: 2,
-        title: "Among Us Online",
-        category: "multiplayer",
-        thumb: "images/placeholder.svg",
-        iframeUrl: "https://poki.com/en/g/among-us-online",
-        description: "Find the impostor among your crew! Work together to complete tasks or eliminate crewmates as the impostor.",
-        instructions: ["Mouse to move and interact", "Click to use", "Complete tasks or find impostor"],
-        rating: 4.6
-    },
-    {
-        id: 3,
-        title: "Wave Dash",
-        category: "wave-dash",
-        thumb: "images/wave-dash.svg",
-        iframeUrl: "https://www.miniplay.com/embed/wave-dash",
-        description: "Jump and fly your way through danger in this rhythm-based action platformer!",
-        instructions: ["Spacebar or mouse click to jump", "Follow the rhythm", "Avoid obstacles"],
-        rating: 4.7
-    },
-    {
-        id: 4,
-        title: "Minecraft Classic",
-        category: "minecraft",
-        thumb: "images/placeholder.svg",
-        iframeUrl: "https://classic.minecraft.net/",
-        description: "Build your own world with blocks! Create amazing structures in this classic sandbox game.",
-        instructions: ["WASD to move", "Mouse to look around", "Left click to break, right click to place"],
-        rating: 4.9
-    },
-    {
-        id: 5,
-        title: "Temple Run 2",
-        category: "action",
-        thumb: "images/placeholder.svg",
-        iframeUrl: "https://poki.com/en/g/temple-run-2",
-        description: "Navigate perilous cliffs, zip lines, mines and forests in this endless running adventure!",
-        instructions: ["Swipe to turn and jump", "Tilt to lean", "Collect coins and gems"],
-        rating: 4.5
-    },
-    {
-        id: 6,
-        title: "2048",
-        category: "puzzle",
-        thumb: "images/placeholder.svg",
-        iframeUrl: "https://poki.com/en/g/2048",
-        description: "Join the numbers and get to the 2048 tile! Swipe to move tiles and combine matching numbers.",
-        instructions: ["Arrow keys to move tiles", "Combine matching numbers", "Reach 2048 to win"],
-        rating: 4.4
-    },
-    {
-        id: 7,
-        title: "Slither.io",
-        category: "io",
-        thumb: "images/placeholder.svg",
-        iframeUrl: "https://slither.io/",
-        description: "Control a snake and eat glowing orbs to grow longer. Avoid other snakes and try to become the biggest!",
-        instructions: ["Mouse to control direction", "Eat glowing orbs", "Avoid other snakes"],
-        rating: 4.3
-    },
-    {
-        id: 8,
-        title: "Basketball Stars",
-        category: "sports",
-        thumb: "images/placeholder.svg",
-        iframeUrl: "https://poki.com/en/g/basketball-stars",
-        description: "Shoot hoops and score big in this exciting basketball game! Challenge players worldwide.",
-        instructions: ["Mouse to aim and shoot", "Time your shots perfectly", "Score more than opponent"],
-        rating: 4.6
-    },
-    {
-        id: 9,
-        title: "Papa's Pizzeria",
-        category: "girls",
-        thumb: "images/placeholder.svg",
-        iframeUrl: "https://poki.com/en/g/papas-pizzeria",
-        description: "Run your own pizza restaurant! Take orders, make pizzas, and serve customers in this time management game.",
-        instructions: ["Mouse to interact", "Take orders carefully", "Make pizzas to specification"],
-        rating: 4.7
-    },
-    {
-        id: 10,
-        title: "Granny Horror",
-        category: "horror",
-        thumb: "images/placeholder.svg",
-        iframeUrl: "https://poki.com/en/g/granny",
-        description: "Escape from Granny's house! You have 5 days to get out. Don't make noise or she'll hear you...",
-        instructions: ["WASD to move quietly", "Mouse to interact", "Find keys and items to escape"],
-        rating: 4.2
-    },
-    {
-        id: 11,
-        title: "Fireboy and Watergirl",
-        category: "2player",
-        thumb: "images/placeholder.svg",
-        iframeUrl: "https://poki.com/en/g/fireboy-and-watergirl-the-forest-temple",
-        description: "Help Fireboy and Watergirl work together to collect gems and reach the exit in each level.",
-        instructions: ["Arrow keys for Fireboy", "WASD for Watergirl", "Collect gems and reach exits"],
-        rating: 4.8
-    },
-    {
-        id: 12,
-        title: "Bubble Shooter",
-        category: "puzzle",
-        thumb: "images/placeholder.svg",
-        iframeUrl: "https://poki.com/en/g/bubble-shooter",
-        description: "Match three or more bubbles of the same color to clear them from the board in this classic puzzle game.",
-        instructions: ["Mouse to aim and shoot", "Match 3+ same colors", "Clear all bubbles to win"],
-        rating: 4.1
-    }
-];
-
 // 全局变量
 let currentGame = null;
 let isFullscreen = false;
@@ -149,29 +24,54 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeGamePage() {
     console.log('🎮 Initializing game page...');
     
-    // Get game data from sessionStorage
-    const gameData = sessionStorage.getItem('currentGame');
-    console.log('📦 Raw sessionStorage data:', gameData);
+    // First try to get game from URL parameters (slug support)
+    const urlParams = new URLSearchParams(window.location.search);
+    const gameSlug = urlParams.get('game');
+    const gameId = urlParams.get('id');
     
-    if (!gameData) {
-        console.warn('⚠️ No game data found in sessionStorage, redirecting to homepage');
-        // If no game data, return to homepage
+    console.log('🔍 URL parameters - slug:', gameSlug, 'id:', gameId);
+    
+    if (gameSlug) {
+        // Find game by slug (SEO-friendly URL)
+        currentGame = window.GAMES.find(game => game.slug === gameSlug);
+        console.log('🎯 Found game by slug:', currentGame);
+    } else if (gameId) {
+        // Fallback: find game by ID (backward compatibility)
+        currentGame = window.GAMES.find(game => game.id === parseInt(gameId));
+        console.log('🎯 Found game by ID:', currentGame);
+    }
+    
+    // If still no game found, try sessionStorage
+    if (!currentGame) {
+        const gameData = sessionStorage.getItem('currentGame');
+        console.log('📦 Trying sessionStorage:', gameData);
+        
+        if (gameData) {
+            try {
+                currentGame = JSON.parse(gameData);
+                console.log('✅ Successfully parsed game data from sessionStorage:', currentGame);
+            } catch (error) {
+                console.error('❌ Failed to parse game data from sessionStorage:', error);
+            }
+        }
+    }
+    
+    if (!currentGame) {
+        console.warn('⚠️ No game found, redirecting to homepage');
         window.location.href = 'index.html';
         return;
     }
     
-    try {
-        currentGame = JSON.parse(gameData);
-        console.log('✅ Successfully parsed game data:', currentGame);
-        
-        setupGamePage();
-        setupEventListeners();
-        loadGame();
-    } catch (error) {
-        console.error('❌ Failed to parse game data:', error);
-        console.log('📄 Raw data that failed to parse:', gameData);
-        window.location.href = 'index.html';
+    // Update URL to use slug if not already using it
+    if (!gameSlug && currentGame.slug) {
+        const newUrl = `${window.location.pathname}?game=${currentGame.slug}`;
+        window.history.replaceState({}, '', newUrl);
+        console.log('🔄 Updated URL to use slug:', newUrl);
     }
+    
+    setupGamePage();
+    setupEventListeners();
+    loadGame();
 }
 
 // 设置游戏页面
@@ -476,6 +376,10 @@ function createRelatedGameCard(game) {
 function openRelatedGame(game) {
     // Update sessionStorage
     sessionStorage.setItem('currentGame', JSON.stringify(game));
+    
+    // Update URL to use slug (SEO-friendly)
+    const gameUrl = game.slug ? `?game=${game.slug}` : `?id=${game.id}`;
+    window.history.pushState({}, '', gameUrl);
     
     // Re-initialize current page
     currentGame = game;

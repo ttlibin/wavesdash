@@ -253,25 +253,25 @@ function hideNoResults() {
     if (noResults) noResults.style.display = 'none';
 }
 
-// Open game in game page
+// Open game page
 function openGame(gameId) {
     console.log('🎮 Opening game with ID:', gameId);
     
     const game = allGames.find(g => g.id == gameId);
-    console.log('🔍 Found game:', game);
-    
     if (game) {
-        // Store game data in sessionStorage for the game page
+        console.log('🎯 Found game:', game);
+        
+        // Store game data in sessionStorage
         sessionStorage.setItem('currentGame', JSON.stringify(game));
-        console.log('💾 Stored game data in sessionStorage:', JSON.stringify(game));
         
         // Verify storage
-        const stored = sessionStorage.getItem('currentGame');
+        const stored = JSON.parse(sessionStorage.getItem('currentGame'));
         console.log('✅ Verified stored data:', stored);
         
-        // Navigate to game page
-        console.log('🚀 Navigating to game.html?id=' + gameId);
-        window.location.href = `game.html?id=${gameId}`;
+        // Navigate to game page using slug (SEO-friendly URL)
+        const gameUrl = game.slug ? `game.html?game=${game.slug}` : `game.html?id=${gameId}`;
+        console.log('🚀 Navigating to:', gameUrl);
+        window.location.href = gameUrl;
     } else {
         console.error('❌ Game not found with ID:', gameId);
         console.log('📋 Available games:', allGames);

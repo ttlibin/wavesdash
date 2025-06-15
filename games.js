@@ -1,11 +1,12 @@
 window.GAMES = [
   {
     id: 1,
+    slug: "geometry-jump",
     title: "Geometry Jump",
     description: "Jump over obstacles in this fast-paced geometry-based platformer! Time your jumps perfectly to avoid spikes and reach the finish line.",
     category: "geometry-dash",
     thumb: "images/geometry-jump.png",
-    iframeUrl: "https://www.jopi.com/embed.php?game=geometry-jump",
+    iframeUrl: "https://1games.io/game/geometry-jump/",
     tags: ["platformer", "jumping", "geometry", "arcade", "challenging"],
     instructions: ["Click or spacebar to jump", "Time your jumps carefully", "Avoid spikes and obstacles", "Reach the end to complete level"],
     rating: 4.8,
@@ -13,11 +14,12 @@ window.GAMES = [
   },
   {
     id: 2,
+    slug: "geometry-arrow",
     title: "Geometry Arrow",
     description: "Navigate through geometric mazes with precise arrow movements! Control your arrow through challenging levels filled with obstacles.",
     category: "geometry-dash",
     thumb: "images/geometry-arrow.png",
-    iframeUrl: "https://www.jopi.com/embed.php?game=geometry-arrow",
+    iframeUrl: "https://1games.io/embed/geometry-arrow",
     tags: ["geometry", "arrow", "maze", "precision", "arcade"],
     instructions: ["Arrow keys to move", "Navigate through obstacles", "Collect gems along the way", "Reach the target to advance"],
     rating: 4.6,
@@ -25,7 +27,8 @@ window.GAMES = [
   },
   {
     id: 3,
-    title: "Geometry Dash",
+    slug: "wave-dash",
+    title: "WAVE Dash",
     description: "Jump and fly your way through danger in this rhythm-based action platformer! Navigate through impossible levels with perfect timing.",
     category: "geometry-dash",
     thumb: "images/wave-dash.jpg",
@@ -37,6 +40,7 @@ window.GAMES = [
   },
   {
     id: 4,
+    slug: "geometry-dash-black-wave",
     title: "Geometry Dash Black Wave",
     description: "Master the wave gamemode in this intense Geometry Dash level! Navigate through tight spaces with fluid wave movements.",
     category: "geometry-dash",
@@ -49,6 +53,7 @@ window.GAMES = [
   },
   {
     id: 5,
+    slug: "geometry-dash-black-wave-2",
     title: "Geometry Dash Black Wave 2",
     description: "The sequel to Black Wave with even more challenging wave sequences! Test your skills in this advanced geometry level.",
     category: "geometry-dash",
@@ -61,6 +66,7 @@ window.GAMES = [
   },
   {
     id: 6,
+    slug: "geometry-dash-black-wave-3",
     title: "Geometry Dash Black Wave 3",
     description: "The third installment of the Black Wave series with new mechanics and obstacles! Can you conquer this ultimate wave challenge?",
     category: "geometry-dash",
@@ -73,6 +79,7 @@ window.GAMES = [
   },
   {
     id: 7,
+    slug: "geometry-dash-black-wave-4",
     title: "Geometry Dash Black Wave 4",
     description: "Push your wave skills to the limit in the fourth Black Wave adventure! Experience new level design and wave challenges.",
     category: "geometry-dash",
@@ -85,6 +92,7 @@ window.GAMES = [
   },
   {
     id: 8,
+    slug: "geometry-dash-black-wave-5",
     title: "Geometry Dash Black Wave 5",
     description: "The epic finale of the Black Wave series! Face the ultimate wave challenge with the most complex patterns yet.",
     category: "geometry-dash",
@@ -97,6 +105,7 @@ window.GAMES = [
   },
   {
     id: 9,
+    slug: "geometry-dash-wave",
     title: "Geometry Dash Wave",
     description: "Experience pure wave gameplay in this classic Geometry Dash mode! Master the art of wave navigation through various obstacles.",
     category: "geometry-dash",
@@ -109,6 +118,7 @@ window.GAMES = [
   },
   {
     id: 10,
+    slug: "geometry-dash-hyper-wave-neon-challenge",
     title: "Geometry Dash Hyper Wave Neon Challenge",
     description: "Enter a neon-lit hyper wave challenge with intense visuals and fast-paced gameplay! Can you handle the speed?",
     category: "geometry-dash",
@@ -121,6 +131,7 @@ window.GAMES = [
   },
   {
     id: 11,
+    slug: "smash-karts-io",
     title: "Smash Karts IO",
     description: "Race against players worldwide in this action-packed kart racing battle royale! Collect weapons and smash your opponents!",
     category: "multiplayer",
@@ -133,6 +144,7 @@ window.GAMES = [
   },
   {
     id: 12,
+    slug: "paper-io-2",
     title: "Paper IO 2",
     description: "Conquer territory by drawing lines and creating closed shapes! Avoid other players while expanding your paper empire.",
     category: "io",
@@ -142,5 +154,83 @@ window.GAMES = [
     instructions: ["Move to draw lines", "Return to your territory to claim area", "Avoid hitting other players' lines", "Expand your territory"],
     rating: 4.1,
     dateAdded: "2024-08-20"
+  },
+  {
+    id: 13,
+    slug: "geometry-dash-breeze",
+    title: "Geometry Dash Breeze",
+    description: "Experience a refreshing breeze of challenges in this smooth Geometry Dash level! Navigate through flowing obstacles with graceful movements.",
+    category: "geometry-dash",
+    thumb: "images/geometry-dash-breeze.jpg",
+    iframeUrl: "https://1games.io/game/geometry-dash-breeze/",
+    tags: ["geometry-dash", "breeze", "smooth", "flowing", "relaxing"],
+    instructions: ["Click or spacebar to jump", "Follow the gentle rhythm", "Navigate through wind-like obstacles", "Enjoy the smooth gameplay"],
+    rating: 4.6,
+    dateAdded: "2025-6-14"
+  },
+  {
+    id: 14,
+    slug: "geometry-dash-world",
+    title: "Geometry Dash World",
+    description: "Explore different worlds in this expanded Geometry Dash adventure! Travel through various themed levels with unique challenges.",
+    category: "geometry-dash",
+    thumb: "images/geometry-dash-world.png",
+    iframeUrl: "https://1games.io/game/geometry-dash-world/",
+    tags: ["geometry-dash", "world", "adventure", "themed", "exploration"],
+    instructions: ["Jump with spacebar or click", "Explore different world themes", "Master various level mechanics", "Unlock new worlds by progressing"],
+    rating: 4.6,
+    dateAdded: "2025-6-14"
+  },
+  {
+    id: 15,
+    slug: "geometry-vibes",
+    title: "Geometry Vibes",
+    description: "Feel the rhythm and vibes in this energetic Geometry Dash experience! Sync your movements with the beat and overcome vibrant challenges.",
+    category: "geometry-dash",
+    thumb: "images/geometry-vibes.jpg",
+    iframeUrl: "https://geometryarrow.io/embed/geometry-vibes",
+    tags: ["geometry-dash", "vibes", "rhythm", "energetic", "music"],
+    instructions: ["Jump with spacebar or click", "Feel the music rhythm", "Navigate colorful obstacles", "Stay in sync with the beat"],
+    rating: 4.7,
+    dateAdded: "2025-06-15"
+  },
+  {
+    id: 16,
+    slug: "space-waves",
+    title: "Space Waves",
+    description: "Journey through space with wave-based gameplay! Navigate your ship through cosmic obstacles in this stellar adventure.",
+    category: "geometry-dash",
+    thumb: "images/space-waves.jpg",
+    iframeUrl: "https://geometryarrow.io/embed/space-waves",
+    tags: ["geometry-dash", "space", "waves", "cosmic", "adventure"],
+    instructions: ["Hold to ascend, release to descend", "Navigate through space debris", "Collect space gems", "Avoid asteroid obstacles"],
+    rating: 4.5,
+    dateAdded: "2025-06-15"
+  },
+  {
+    id: 17,
+    slug: "geometry-game-3d",
+    title: "Geometry Game 3D",
+    description: "Experience Geometry Dash in a whole new dimension! Navigate through 3D geometric landscapes with enhanced depth and perspective.",
+    category: "geometry-dash",
+    thumb: "images/geometry-game-3d.jpg",
+    iframeUrl: "https://geometryarrow.io/embed/geometry-game-3d",
+    tags: ["geometry-dash", "3d", "dimension", "perspective", "geometric"],
+    instructions: ["Use spacebar to jump", "Navigate 3D obstacles", "Adjust to depth perception", "Master dimensional gameplay"],
+    rating: 4.6,
+    dateAdded: "2025-06-15"
+  },
+  {
+    id: 18,
+    slug: "wave-road",
+    title: "Wave Road",
+    description: "Travel down the endless wave road with precise control! Master the art of wave navigation on this challenging geometric highway.",
+    category: "geometry-dash",
+    thumb: "images/wave-road.jpg",
+    iframeUrl: "https://geometryarrow.io/embed/wave-road",
+    tags: ["geometry-dash", "wave", "road", "highway", "precision"],
+    instructions: ["Control wave movement", "Stay on the road path", "Avoid falling off edges", "Maintain steady rhythm"],
+    rating: 4.4,
+    dateAdded: "2025-06-15"
   }
 ]; 
