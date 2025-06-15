@@ -17,7 +17,7 @@ window.GAMES = [
     description: "Navigate through geometric mazes with precise arrow movements! Control your arrow through challenging levels filled with obstacles.",
     category: "geometry-dash",
     thumb: "images/geometry-arrow.png",
-    iframeUrl: "https://html5.gamedistribution.com/9ee26ba4405c456094c70af7dc31a524/?gd_sdk_referrer_url=https://1games.io/geometry-arrow",
+    iframeUrl: "https://1games.io/embed/geometry-arrow",
     tags: ["geometry", "arrow", "maze", "precision", "arcade"],
     instructions: ["Arrow keys to move", "Navigate through obstacles", "Collect gems along the way", "Reach the target to advance"],
     rating: 4.6,
