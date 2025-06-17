@@ -45,7 +45,7 @@ window.GAMES = [
     description: "Master the wave gamemode in this intense Geometry Dash level! Navigate through tight spaces with fluid wave movements.",
     category: "geometry-dash",
     thumb: "images/geometry-dash-black-wave.jpg",
-    iframeUrl: "https://www.jopi.com/embed.php?game=geometry-dash-black-wave",
+    iframeUrl: "https://g.vseigru.net/7/igra-chjornaya-geometri-volna-super-chellendzh/",
     tags: ["wave", "geometry-dash", "challenging", "dark", "precision"],
     instructions: ["Hold to go up, release to go down", "Navigate through narrow passages", "Perfect timing is essential", "Avoid hitting walls"],
     rating: 4.9,
