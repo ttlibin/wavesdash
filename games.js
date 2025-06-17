@@ -97,8 +97,7 @@ window.GAMES = [
     description: "The epic finale of the Black Wave series! Face the ultimate wave challenge with the most complex patterns yet.",
     category: "geometry-dash",
     thumb: "images/geometry-dash-black-wave5.jpg",
-    iframeUrl: "https://app-373298.games.s3.yandex.net/373298/r8k1p219s59kjpid5ymnkvyfb59shfd2/index.html?sdk=%2Fsdk%2F_%2Fv2.5bc8bbec2107c9209400.js#origin=https%3A%2F%2Fallwebgames.com&amp;app-id=373298&amp;device-type=desktop
-",
+    iframeUrl: "https://app-373298.games.s3.yandex.net/373298/r8k1p219s59kjpid5ymnkvyfb59shfd2/index.html?sdk=%2Fsdk%2F_%2Fv2.5bc8bbec2107c9209400.js#origin=https%3A%2F%2Fallwebgames.com&amp;app-id=373298&amp;device-type=desktop",
     tags: ["wave", "finale", "ultimate", "geometry-dash", "mastery"],
     instructions: ["Perfect wave technique required", "Handle multiple wave types", "Memorize difficult sections", "Never give up!"],
     rating: 4.6,
