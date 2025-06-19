@@ -108,11 +108,15 @@ function filterAndDisplayGames() {
                 .sort((a, b) => b.rating - a.rating); // 按评分降序排序
                 
         } else {
-            // 普通分类筛选
+            // 普通分类筛选 - 支持主分类和副分类
             filteredGames = filteredGames.filter(game => {
-                // 检查单一分类字段
-                if (game.category) {
-                    return game.category === currentCategory;
+                // 检查主分类字段
+                if (game.category === currentCategory) {
+                    return true;
+                }
+                // 检查tags数组中是否包含分类名称（副分类）
+                if (game.tags && Array.isArray(game.tags)) {
+                    return game.tags.includes(currentCategory);
                 }
                 return false;
             });
