@@ -7,7 +7,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/geometry-jump.png",
     iframeUrl: "https://1games.io/game/geometry-jump/",
-    tags: ["platformer", "jumping", "geometry", "arcade", "challenging"],
+    tags: ["platformer", "jumping", "geometry", "arcade", "skill"],
     instructions: ["Click or spacebar to jump", "Time your jumps carefully", "Avoid spikes and obstacles", "Reach the end to complete level"],
     rating: 4.8,
     dateAdded: "2025-06-10"
@@ -20,7 +20,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/geometry-arrow.png",
     iframeUrl: "https://1games.io/embed/geometry-arrow",
-    tags: ["geometry", "arrow", "maze", "precision", "arcade"],
+    tags: ["geometry", "arrow", "maze", "precision", "arcade","skill"],
     instructions: ["Arrow keys to move", "Navigate through obstacles", "Collect gems along the way", "Reach the target to advance"],
     rating: 4.6,
     dateAdded: "2025-06-08"
@@ -33,7 +33,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/wave-dash.jpg",
     iframeUrl: "https://www.jopi.com/embed.php?game=geometry-dash",
-    tags: ["platformer", "rhythm", "challenging", "music", "geometry"],
+    tags: ["platformer", "rhythm", "challenging", "music", "geometry","skill"],
     instructions: ["Click or spacebar to jump", "Follow the music rhythm", "Avoid spikes and obstacles", "Practice mode available"],
     rating: 4.7,
     dateAdded: "2025-06-05"
@@ -46,7 +46,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/geometry-dash-black-wave.jpg",
     iframeUrl: "https://g.vseigru.net/7/igra-chjornaya-geometri-volna-super-chellendzh/",
-    tags: ["wave", "geometry-dash", "challenging", "dark", "precision"],
+    tags: ["wave", "geometry-dash", "challenging", "dark", "precision","skill"],
     instructions: ["Hold to go up, release to go down", "Navigate through narrow passages", "Perfect timing is essential", "Avoid hitting walls"],
     rating: 4.9,
     dateAdded: "2025-06-01"
@@ -59,7 +59,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/geometry-dash-black-wave2.jpg",
     iframeUrl: "https://yandex.com/games/app/307214?utm_source=distrib&amp;utm_medium=geometrydashwave.com",
-    tags: ["wave", "sequel", "hard", "geometry-dash", "expert"],
+    tags: ["wave", "sequel", "hard", "geometry-dash", "expert","skill"],
     instructions: ["Hold to ascend, release to descend", "Master wave physics", "Navigate tight corridors", "Patience and practice required"],
     rating: 4.5,
     dateAdded: "2025-05-28"
@@ -72,7 +72,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/geometry-dash-black-wave3.jpg",
     iframeUrl: "https://g.vseigru.net/7/igra-chjornaya-geometri-volna-super-chellendzh/",
-    tags: ["wave", "trilogy", "extreme", "geometry-dash", "mechanics"],
+    tags: ["wave", "trilogy", "extreme", "geometry-dash", "mechanics","skill"],
     instructions: ["Control wave movement", "Learn new wave patterns", "Adapt to changing gravity", "Complete all checkpoints"],
     rating: 4.4,
     dateAdded: "2025-05-25"
@@ -98,7 +98,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/geometry-dash-black-wave5.jpg",
     iframeUrl: "https://app-373298.games.s3.yandex.net/373298/r8k1p219s59kjpid5ymnkvyfb59shfd2/index.html?sdk=%2Fsdk%2F_%2Fv2.5bc8bbec2107c9209400.js#origin=https%3A%2F%2Fallwebgames.com&amp;app-id=373298&amp;device-type=desktop",
-    tags: ["wave", "finale", "ultimate", "geometry-dash", "mastery"],
+    tags: ["wave", "finale", "ultimate", "geometry-dash", "mastery","skill"],
     instructions: ["Perfect wave technique required", "Handle multiple wave types", "Memorize difficult sections", "Never give up!"],
     rating: 4.6,
     dateAdded: "2025-05-15"
@@ -111,7 +111,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/Geometry Dash Wave.jpg",
     iframeUrl: "https://www.jopi.com/embed.php?game=geometry-dash-wave",
-    tags: ["wave", "classic", "geometry-dash", "pure", "original"],
+    tags: ["wave", "classic", "geometry-dash", "pure", "original","skill"],
     instructions: ["Hold to rise, release to fall", "Control wave amplitude", "Avoid ceiling and floor", "Maintain steady rhythm"],
     rating: 4.7,
     dateAdded: "2024-11-25"
@@ -124,7 +124,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/Geometry Dash Hyper Wave Neon Challenge.jpg",
     iframeUrl: "https://www.jopi.com/embed.php?game=geometry-dash-hyper-wave-neon-challenge",
-    tags: ["hyper", "neon", "fast", "wave", "visual"],
+    tags: ["hyper", "neon", "fast", "wave", "visual","skill"],
     instructions: ["React quickly to changes", "Handle high-speed wave", "Follow neon indicators", "Stay focused on patterns"],
     rating: 4.2,
     dateAdded: "2024-09-15"
@@ -163,7 +163,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/geometry-dash-breeze.jpg",
     iframeUrl: "https://1games.io/game/geometry-dash-breeze/",
-    tags: ["geometry-dash", "breeze", "smooth", "flowing", "relaxing"],
+    tags: ["geometry-dash", "breeze", "smooth", "flowing", "relaxing","skill"],
     instructions: ["Click or spacebar to jump", "Follow the gentle rhythm", "Navigate through wind-like obstacles", "Enjoy the smooth gameplay"],
     rating: 4.6,
     dateAdded: "2025-6-14"
@@ -176,7 +176,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/geometry-dash-world.png",
     iframeUrl: "https://1games.io/game/geometry-dash-world/",
-    tags: ["geometry-dash", "world", "adventure", "themed", "exploration"],
+    tags: ["geometry-dash", "world", "adventure", "themed", "exploration","skill"],
     instructions: ["Jump with spacebar or click", "Explore different world themes", "Master various level mechanics", "Unlock new worlds by progressing"],
     rating: 4.6,
     dateAdded: "2025-6-14"
@@ -189,7 +189,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/geometry-vibes.webp",
     iframeUrl: "https://1games.io/embed/geometry-vibes",
-    tags: ["geometry-dash", "vibes", "rhythm", "energetic", "music"],
+    tags: ["geometry-dash", "vibes", "rhythm", "energetic", "music","skill"],
     instructions: ["Jump with spacebar or click", "Feel the music rhythm", "Navigate colorful obstacles", "Stay in sync with the beat"],
     rating: 4.7,
     dateAdded: "2025-06-15"
@@ -202,7 +202,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/space-waves.webp",
     iframeUrl: "https://crazygames.com/embed/space-waves",
-    tags: ["geometry-dash", "space", "waves", "cosmic", "adventure"],
+    tags: ["geometry-dash", "space", "waves", "cosmic", "adventure","skill"],
     instructions: ["Hold to ascend, release to descend", "Navigate through space debris", "Collect space gems", "Avoid asteroid obstacles"],
     rating: 4.5,
     dateAdded: "2025-06-15"
@@ -215,7 +215,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/geometry-game-3d.webp",
     iframeUrl: "https://1games.io/embed/geometry-game-3d",
-    tags: ["geometry-dash", "3d", "dimension", "perspective", "geometric"],
+    tags: ["geometry-dash", "3d", "dimension", "perspective", "geometric","skill"],
     instructions: ["Use spacebar to jump", "Navigate 3D obstacles", "Adjust to depth perception", "Master dimensional gameplay"],
     rating: 4.6,
     dateAdded: "2025-06-15"
@@ -228,7 +228,7 @@ window.GAMES = [
     category: "geometry-dash",
     thumb: "images/wave-road.webp",
     iframeUrl: "https://1games.io/embed/wave-road",
-    tags: ["geometry-dash", "wave", "road", "highway", "precision"],
+    tags: ["geometry-dash", "wave", "road", "highway", "precision","skill"],
     instructions: ["Control wave movement", "Stay on the road path", "Avoid falling off edges", "Maintain steady rhythm"],
     rating: 4.4,
     dateAdded: "2025-06-15"
