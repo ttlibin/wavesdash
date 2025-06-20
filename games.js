@@ -336,5 +336,70 @@ window.GAMES = [
     instructions: ["Shoot marbles to create matches", "Match 3+ marbles of same color", "Break the marble chains", "Complete totemic challenges"],
     rating: 4.8,
     dateAdded: "2025-06-16"
+  },
+  {
+    id: 27,
+    slug: "climbing-block",
+    title: "Climbing Block",
+    description: "Test your climbing skills in this challenging block adventure! Navigate through obstacles and reach new heights in this exciting vertical platformer.",
+    category: "casual",
+    thumb: "images/climbing-block.webp",
+    iframeUrl: "https://www.crazygames.com/embed/climbing-block---let-s-up-llam",
+    tags: ["casual", "climbing", "adventure", "skill", "platformer"],
+    instructions: ["Use arrow keys or WASD to move", "Jump to climb higher blocks", "Avoid falling obstacles", "Reach the top to win"],
+    rating: 4.8,
+    dateAdded: "2025-06-17"
+  },
+  {
+    id: 28,
+    slug: "lumber-harvest-tree-cutting-game",
+    title: "Lumber Harvest: Tree Cutting Game",
+    description: "Experience the satisfying world of tree cutting and lumber harvesting! Manage your resources, upgrade your tools, and build a thriving lumber business.",
+    category: "casual",
+    thumb: "images/lumber-harvest.jpg",
+    iframeUrl: "https://www.crazygames.com/embed/lumber-harvest-tree-cutting-game",
+    tags: ["casual", "simulation", "management", "harvesting", "business"],
+    instructions: ["Click to cut trees", "Collect lumber and resources", "Upgrade your equipment", "Expand your lumber empire"],
+    rating: 4.7,
+    dateAdded: "2025-06-17"
+  },
+  {
+    id: 29,
+    slug: "craft-market",
+    title: "Craft Market",
+    description: "Run your own craft market and create amazing items! Buy materials, craft products, and sell them to customers in this engaging business simulation.",
+    category: "casual",
+    thumb: "images/cubic-shop.avif",
+    iframeUrl: "https://www.crazygames.com/embed/cubic-shop",
+    tags: ["casual", "crafting", "business", "management", "market"],
+    instructions: ["Buy raw materials", "Craft items in your workshop", "Set prices and sell products", "Upgrade your shop and equipment"],
+    rating: 4.9,
+    dateAdded: "2025-06-17"
+  },
+  {
+    id: 30,
+    slug: "stone-grass-mowing-simulator",
+    title: "Stone Grass: Mowing Simulator",
+    description: "Relax and enjoy the peaceful art of lawn mowing! Cut grass, maintain beautiful lawns, and experience the satisfaction of perfectly manicured landscapes.",
+    category: "casual",
+    thumb: "images/stone-grass-mowing-simulator.avif",
+    iframeUrl: "https://www.crazygames.com/embed/stone-grass-mowing-simulator",
+    tags: ["casual", "simulation", "relaxing", "mowing", "peaceful"],
+    instructions: ["Control the lawn mower", "Cut all the grass evenly", "Avoid obstacles and trees", "Complete each level perfectly"],
+    rating: 4.8,
+    dateAdded: "2025-06-17"
+  },
+  {
+    id: 31,
+    slug: "ragdoll-archers",
+    title: "Ragdoll Archers",
+    description: "Become a master archer in this fun physics-based shooting game! Aim carefully and watch as ragdoll enemies react to your precise arrows with hilarious physics.",
+    category: "casual",
+    thumb: "images/ragdoll-archers-cover.avif",
+    iframeUrl: "https://www.crazygames.com/embed/ragdoll-archers",
+    tags: ["casual", "archery", "physics", "ragdoll", "shooting"],
+    instructions: ["Aim with mouse", "Click and drag to set power", "Release to shoot arrows", "Hit targets for maximum points"],
+    rating: 4.6,
+    dateAdded: "2025-06-17"
   }
 ]; 
