@@ -382,7 +382,7 @@ window.GAMES = [
     title: "Stone Grass: Mowing Simulator",
     description: "Relax and enjoy the peaceful art of lawn mowing! Cut grass, maintain beautiful lawns, and experience the satisfaction of perfectly manicured landscapes.",
     category: "casual",
-    thumb: "images/stone-grass-mowing-simulator.avif",
+    thumb: "images/stone-grass.jpg",
     iframeUrl: "https://www.crazygames.com/embed/stone-grass-mowing-simulator",
     tags: ["casual", "simulation", "relaxing", "mowing", "peaceful"],
     instructions: ["Control the lawn mower", "Cut all the grass evenly", "Avoid obstacles and trees", "Complete each level perfectly"],
