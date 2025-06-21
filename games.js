@@ -347,7 +347,7 @@ window.GAMES = [
     iframeUrl: "https://www.crazygames.com/embed/climbing-block---let-s-up-llam",
     tags: ["casual", "climbing", "adventure", "skill", "platformer"],
     instructions: ["Use arrow keys or WASD to move", "Jump to climb higher blocks", "Avoid falling obstacles", "Reach the top to win"],
-    rating: 4.3,
+    rating: 4.8,
     dateAdded: "2025-06-17"
   },
   {
@@ -360,7 +360,7 @@ window.GAMES = [
     iframeUrl: "https://www.crazygames.com/embed/lumber-harvest-tree-cutting-game",
     tags: ["casual", "simulation", "management", "harvesting", "business"],
     instructions: ["Click to cut trees", "Collect lumber and resources", "Upgrade your equipment", "Expand your lumber empire"],
-    rating: 4.5,
+    rating: 4.7,
     dateAdded: "2025-06-17"
   },
   {
@@ -373,7 +373,7 @@ window.GAMES = [
     iframeUrl: "https://www.crazygames.com/embed/cubic-shop",
     tags: ["casual", "crafting", "business", "management", "market"],
     instructions: ["Buy raw materials", "Craft items in your workshop", "Set prices and sell products", "Upgrade your shop and equipment"],
-    rating: 4.4,
+    rating: 4.9,
     dateAdded: "2025-06-17"
   },
   {
@@ -386,7 +386,7 @@ window.GAMES = [
     iframeUrl: "https://www.crazygames.com/embed/stone-grass-mowing-simulator",
     tags: ["casual", "simulation", "relaxing", "mowing", "peaceful"],
     instructions: ["Control the lawn mower", "Cut all the grass evenly", "Avoid obstacles and trees", "Complete each level perfectly"],
-    rating: 4.2,
+    rating: 4.8,
     dateAdded: "2025-06-17"
   },
   {
