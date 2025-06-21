@@ -1,5 +1,5 @@
 // Global variables
-let currentCategory = 'all';
+let currentCategory = 'trending';
 let currentSearchTerm = '';
 let allGames = window.GAMES || [];
 
@@ -102,17 +102,67 @@ function filterAndDisplayGames() {
             }).sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)); // 按上架时间降序排序
             
         } else if (currentCategory === 'trending') {
-            // Trending games: 显示评分大于4.5的游戏
+            // Trending games: 综合评分和新鲜度的智能热门算法
             filteredGames = filteredGames
-                .filter(game => game.rating > 4.5)
-                .sort((a, b) => b.rating - a.rating); // 按评分降序排序
+                .map(game => {
+                    // 计算热门分数
+                    let hotScore = 0;
+                    
+                    // 评分权重 (40%)
+                    if (game.rating) {
+                        hotScore += (game.rating / 5) * 40;
+                    }
+                    
+                    // 新鲜度权重 (30%) - 最近添加的游戏获得更高分数
+                    if (game.dateAdded) {
+                        const gameDate = new Date(game.dateAdded);
+                        const now = new Date();
+                        const daysSinceAdded = (now - gameDate) / (1000 * 60 * 60 * 24);
+                        
+                        // 30天内的游戏获得最高新鲜度分数
+                        if (daysSinceAdded <= 30) {
+                            hotScore += 30;
+                        } else if (daysSinceAdded <= 90) {
+                            hotScore += 20;
+                        } else if (daysSinceAdded <= 180) {
+                            hotScore += 10;
+                        }
+                    }
+                    
+                    // 特定类型加分 (30%)
+                    // Geometry Dash系列和Match3游戏更受欢迎
+                    if (game.category === 'geometry-dash' || 
+                        (game.tags && game.tags.includes('geometry-dash'))) {
+                        hotScore += 15;
+                    }
+                    if (game.category === 'match3') {
+                        hotScore += 10;
+                    }
+                    if (game.category === 'casual') {
+                        hotScore += 8;
+                    }
+                    
+                    // 高评分游戏额外加分
+                    if (game.rating >= 4.7) {
+                        hotScore += 5;
+                    }
+                    
+                    return { ...game, hotScore };
+                })
+                .filter(game => game.hotScore > 40) // 只显示热门分数超过40的游戏
+                .sort((a, b) => b.hotScore - a.hotScore) // 按热门分数降序排序
+                .slice(0, 20); // 最多显示20个热门游戏
                 
         } else {
-            // 普通分类筛选
+            // 普通分类筛选 - 支持主分类和副分类
             filteredGames = filteredGames.filter(game => {
-                // 检查单一分类字段
-                if (game.category) {
-                    return game.category === currentCategory;
+                // 检查主分类字段
+                if (game.category === currentCategory) {
+                    return true;
+                }
+                // 检查tags数组中是否包含分类名称（副分类）
+                if (game.tags && Array.isArray(game.tags)) {
+                    return game.tags.includes(currentCategory);
                 }
                 return false;
             });
@@ -142,8 +192,8 @@ function filterAndDisplayGames() {
 
 // Load and display games
 function loadGames() {
-    displayGames(allGames);
-    updateGameCount(allGames.length);
+    // 初始加载时显示热门游戏，而不是所有游戏
+    filterAndDisplayGames();
 }
 
 // Display games in grid

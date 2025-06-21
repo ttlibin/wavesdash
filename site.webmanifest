@@ -1,0 +1,33 @@
+{
+    "name": "WAVE⚡DASH - Free Online Games",
+    "short_name": "WavesDash",
+    "description": "Play free online games including Geometry Dash, Match 3, Casual games and more!",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1a1a1a",
+    "theme_color": "#FFD700",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "images/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "images/favicon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "images/favicon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "games",
+        "entertainment"
+    ],
+    "lang": "en"
+} 

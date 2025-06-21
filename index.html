@@ -18,6 +18,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WAVE⚡DASH - Free Online Games Platform</title>
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#FFD700">
+    
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="games.js"></script>
@@ -57,7 +66,7 @@
                 <h3>Game Categories</h3>
             </div>
             <nav class="category-list">
-                <div class="category-item active" data-category="all">
+                <div class="category-item" data-category="all">
                     <i class="fas fa-home"></i>
                     <span class="category-name">All Games</span>
                 </div>
@@ -65,7 +74,7 @@
                     <i class="fas fa-star"></i>
                     <span class="category-name">New Games</span>
                 </div>
-                <div class="category-item" data-category="trending">
+                <div class="category-item active" data-category="trending">
                     <i class="fas fa-fire"></i>
                     <span class="category-name">Trending</span>
                 </div>
@@ -121,6 +130,14 @@
                     <i class="fas fa-puzzle-piece"></i>
                     <span class="category-name">Puzzle</span>
                 </div>
+                <div class="category-item" data-category="casual">
+                    <i class="fas fa-smile"></i>
+                    <span class="category-name">Casual</span>
+                </div>
+                <div class="category-item" data-category="match3">
+                    <i class="fas fa-gem"></i>
+                    <span class="category-name">Match 3</span>
+                </div>
                 <div class="category-item" data-category="shooting">
                     <i class="fas fa-bullseye"></i>
                     <span class="category-name">Shooting</span>
@@ -139,7 +156,7 @@
         <!-- Main Content -->
         <main class="main-content">
             <header class="content-header">
-                <h1 id="contentTitle">All Games</h1>
+                <h1 id="contentTitle">Trending</h1>
                 <div class="game-stats">
                     <span id="gameCount">0 games available</span>
                 </div>

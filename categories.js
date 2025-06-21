@@ -34,6 +34,11 @@ window.CATEGORIES = {
         icon: "fas fa-puzzle-piece",
         color: "#06B6D4"
     },
+    "match3": {
+        name: "Match 3",
+        icon: "fas fa-gem",
+        color: "#DC2626"
+    },
     "strategy": {
         name: "Strategy",
         icon: "fas fa-chess",
