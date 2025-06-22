@@ -551,7 +551,7 @@ window.GAMES = [
     title: "I Don't Even Know",
     description: "Embrace the absurd in this unpredictable game! Navigate through random challenges, bizarre scenarios, and unexpected gameplay mechanics.",
     category: "casual",
-    thumb: "images/idk.avif",
+    thumb: "images/idk.webp",
     iframeUrl: "https://www.crazygames.com/embed/i-dont-even-know",
     tags: ["casual", "random", "absurd", "unpredictable", "humor"],
     instructions: ["Expect the unexpected", "Adapt to changing rules", "Embrace the chaos", "Just go with the flow"],
