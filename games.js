@@ -486,7 +486,7 @@ window.GAMES = [
     title: "Capybara Clicker",
     description: "Click your way to capybara paradise! Collect adorable capybaras, unlock new varieties, and build the ultimate capybara collection.",
     category: "casual",
-    thumb: "images/capybara-clicker.avif",
+    thumb: "images/capybara-clicker.webp",
     iframeUrl: "https://www.crazygames.com/embed/capybara-clicker",
     tags: ["casual", "clicker", "capybara", "idle", "collection"],
     instructions: ["Click to collect capybaras", "Upgrade your clicking power", "Unlock new capybara types", "Build automatic capybara generators"],
