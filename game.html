@@ -53,32 +53,43 @@
         </div>
     </nav>
 
-    <!-- Game Container -->
-    <div class="game-container">
-        <div class="game-wrapper" id="gameWrapper">
-            <div class="game-loading" id="gameLoading">
-                <div class="loading-spinner"></div>
-                <p>Loading game, please wait...</p>
-            </div>
-            <iframe 
-                id="gameFrame"
-                src="" 
-                frameborder="0" 
-                allowfullscreen
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                style="display: none;">
-            </iframe>
-            <div class="game-error" id="gameError" style="display: none;">
-                <div class="error-icon">
-                    <i class="fas fa-exclamation-triangle"></i>
+    <!-- Game and Related Games Container -->
+    <div class="game-and-related-container">
+        <!-- Game Container -->
+        <div class="game-container">
+            <div class="game-wrapper" id="gameWrapper">
+                <div class="game-loading" id="gameLoading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading game, please wait...</p>
                 </div>
-                <h3>Failed to load game</h3>
-                <p>The game could not be loaded. Please try refreshing the page or select another game.</p>
-                <button class="retry-btn" onclick="retryGame()">
-                    <i class="fas fa-redo"></i>
-                    Retry
-                </button>
+                <iframe 
+                    id="gameFrame"
+                    src="" 
+                    frameborder="0" 
+                    allowfullscreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                    style="display: none;">
+                </iframe>
+                <div class="game-error" id="gameError" style="display: none;">
+                    <div class="error-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Failed to load game</h3>
+                    <p>The game could not be loaded. Please try refreshing the page or select another game.</p>
+                    <button class="retry-btn" onclick="retryGame()">
+                        <i class="fas fa-redo"></i>
+                        Retry
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Games Sidebar -->
+        <div class="related-games-sidebar">
+            <h3>You Might Also Like</h3>
+            <div class="related-games-grid" id="relatedGamesGrid">
+                <!-- Related games will be added dynamically -->
             </div>
         </div>
     </div>
@@ -102,10 +113,59 @@
             </div>
         </div>
 
-        <div class="related-games">
-            <h3>You Might Also Like</h3>
-            <div class="related-games-grid" id="relatedGamesGrid">
-                <!-- Related games will be added dynamically -->
+        <!-- How to Play Section -->
+        <div class="game-section" id="howToPlaySection" style="display: none;">
+            <h3><i class="fas fa-gamepad"></i> How to Play</h3>
+            <div class="how-to-play-list" id="howToPlayList">
+                <!-- How to play steps will be added dynamically -->
+            </div>
+        </div>
+
+        <!-- Goals and Scoring Section -->
+        <div class="game-section" id="goalsSection" style="display: none;">
+            <h3><i class="fas fa-trophy"></i> Goals & Scoring</h3>
+            <div class="goals-content" id="goalsContent">
+                <!-- Goals and scoring info will be added dynamically -->
+            </div>
+        </div>
+
+        <!-- Levels Section -->
+        <div class="game-section" id="levelsSection" style="display: none;">
+            <h3><i class="fas fa-layer-group"></i> Levels & Strategy</h3>
+            <div class="levels-list" id="levelsList">
+                <!-- Levels will be added dynamically -->
+            </div>
+        </div>
+
+        <!-- Pro Tips Section -->
+        <div class="game-section" id="proTipsSection" style="display: none;">
+            <h3><i class="fas fa-lightbulb"></i> Pro Tips</h3>
+            <div class="pro-tips-list" id="proTipsList">
+                <!-- Pro tips will be added dynamically -->
+            </div>
+        </div>
+
+        <!-- Compatibility Section -->
+        <div class="game-section" id="compatibilitySection" style="display: none;">
+            <h3><i class="fas fa-mobile-alt"></i> Compatibility</h3>
+            <div class="compatibility-content" id="compatibilityContent">
+                <!-- Compatibility info will be added dynamically -->
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="game-section" id="faqSection" style="display: none;">
+            <h3><i class="fas fa-question-circle"></i> Frequently Asked Questions</h3>
+            <div class="faq-list" id="faqList">
+                <!-- FAQ items will be added dynamically -->
+            </div>
+        </div>
+
+        <!-- Attribution Section -->
+        <div class="game-section" id="attributionSection" style="display: none;">
+            <h3><i class="fas fa-info-circle"></i> Game Information</h3>
+            <div class="attribution-content" id="attributionContent">
+                <!-- Attribution info will be added dynamically -->
             </div>
         </div>
     </section>
