@@ -473,25 +473,36 @@ body {
     background: rgba(255, 255, 255, 0.2);
 }
 
+/* 游戏和相关游戏容器 */
+.game-and-related-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    align-items: start;
+}
+
 /* 主要游戏容器 - 桌面版 */
 .game-container {
     position: relative;
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    min-height: 820px; /* 调整为适应768px高度的iframe */
+    height: 600px; /* 固定高度，与右侧推荐框匹配 */
     display: flex;
     align-items: center;
     justify-content: center;
     background: black;
-    /* 保证和下方信息区对齐 */
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 #game-iframe, #gameFrame {
     display: block !important; /* 强制显示，覆盖内联样式 */
-    width: 1024px !important; /* 桌面版更大尺寸，保持4:3比例 */
-    height: 768px !important; /* 桌面版更大尺寸，保持4:3比例 */
+    width: 800px !important; /* 4:3比例：600 * 4/3 = 800 */
+    height: 600px !important; /* 固定高度600px */
     max-width: 100%;
+    max-height: 100%;
     margin: 0 auto;
     background: #222;
     border-radius: 12px;
@@ -536,6 +547,7 @@ body.fullscreen-active {
 
 body.fullscreen-active .game-header,
 body.fullscreen-active .game-info,
+body.fullscreen-active .related-games-sidebar,
 body.fullscreen-active .footer {
     display: none;
 }
@@ -581,9 +593,6 @@ body.fullscreen-active .footer {
     max-width: 1400px; /* 与游戏容器保持一致 */
     margin: 2rem auto;
     padding: 0 2rem;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 2rem;
 }
 
 .game-details {
@@ -630,19 +639,23 @@ body.fullscreen-active .footer {
     font-size: 1.3rem;
 }
 
-/* 相关游戏 */
-.related-games {
+/* 相关游戏侧边栏 */
+.related-games-sidebar {
     background: rgba(255, 255, 255, 0.95);
     color: #333;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 15px;
-    height: fit-content;
+    height: 600px; /* 固定高度，与游戏容器匹配 */
+    position: sticky;
+    top: 100px;
+    overflow-y: auto;
 }
 
-.related-games h3 {
+.related-games-sidebar h3 {
     margin-bottom: 1.5rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-align: center;
+    color: #2c3e50;
 }
 
 .related-games-grid {
@@ -806,14 +819,25 @@ body.fullscreen-active .footer {
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     }
     
+    .game-and-related-container {
+        padding: 0 0.5rem;
+    }
+    
     .game-container {
-        min-height: 360px; /* 小屏幕适应300px iframe高度 */
+        height: 300px; /* 小屏幕：4:3比例，300px高度 */
     }
     
     #game-iframe, #gameFrame {
-        width: 400px !important; /* 小屏幕增大尺寸，保持4:3比例 */
-        height: 300px !important; /* 小屏幕增大尺寸，保持4:3比例 */
+        width: 400px !important; /* 4:3比例：300 * 4/3 = 400 */
+        height: 300px !important;
         max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .related-games-sidebar {
+        padding: 1rem;
+        height: auto;
+        max-height: 300px;
     }
     
     .category-item {
@@ -823,26 +847,39 @@ body.fullscreen-active .footer {
     .category-name {
         font-size: 0.9rem;
     }
+    
+    .game-info {
+        padding: 0 0.5rem;
+    }
 }
 
 @media (max-width: 900px) {
-    .game-container, .game-info {
-        max-width: 100%;
+    .game-and-related-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
         padding: 0 1rem;
     }
     
     .game-container {
-        min-height: 660px; /* 中等屏幕适应600px高度 */
+        height: 450px; /* 中等屏幕：4:3比例，450px高度 */
     }
     
     #game-iframe, #gameFrame {
-        width: 800px !important; /* 中等屏幕增大尺寸，保持4:3比例 */
-        height: 600px !important; /* 中等屏幕增大尺寸，保持4:3比例 */
+        width: 600px !important; /* 4:3比例：450 * 4/3 = 600 */
+        height: 450px !important;
         max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .related-games-sidebar {
+        position: static;
+        height: auto;
+        max-height: 400px;
+        order: 2;
     }
     
     .game-info {
-        grid-template-columns: 1fr;
+        padding: 0 1rem;
     }
 }
 
@@ -867,4 +904,318 @@ body.fullscreen-active .footer {
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(74, 144, 226, 0.8);
+}
+
+/* Enhanced Game Content Styles */
+.game-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e1e5e9;
+}
+
+.game-section h3 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.game-section h3 i {
+    color: #3498db;
+}
+
+/* How to Play Styles */
+.how-to-play-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.how-to-play-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+.step-number {
+    background: #3498db;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    color: #2c3e50;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.step-content p {
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Goals and Scoring Styles */
+.goals-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.goal-item {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.goal-item h4 {
+    color: #2c3e50;
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.goal-item h4 i {
+    color: #e74c3c;
+}
+
+.goal-item p {
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Levels Styles */
+.levels-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.level-item {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.level-item h4 {
+    color: #2c3e50;
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+}
+
+.level-item p {
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Pro Tips Styles */
+.pro-tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pro-tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #fff3cd;
+    border-radius: 8px;
+    border-left: 4px solid #ffc107;
+}
+
+.pro-tip-item i {
+    color: #ffc107;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+}
+
+.pro-tip-item span {
+    color: #856404;
+    line-height: 1.6;
+}
+
+/* Compatibility Styles */
+.compatibility-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.compatibility-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.compatibility-item i {
+    color: #3498db;
+    font-size: 1.2rem;
+}
+
+.compatibility-item span {
+    color: #2c3e50;
+}
+
+.compatibility-issues {
+    padding: 1.5rem;
+    background: #f8d7da;
+    border-radius: 8px;
+    border: 1px solid #f5c6cb;
+}
+
+.compatibility-issues h4 {
+    color: #721c24;
+    margin: 0 0 1rem 0;
+}
+
+.compatibility-issues ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.compatibility-issues li {
+    color: #721c24;
+    margin-bottom: 0.5rem;
+}
+
+/* FAQ Styles */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-question {
+    background: #f8f9fa;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #e9ecef;
+}
+
+.faq-question h4 {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.faq-answer {
+    padding: 1rem 1.5rem;
+    background: white;
+}
+
+.faq-answer p {
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Attribution Styles */
+.attribution-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.attribution-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.attribution-item i {
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+.attribution-item span {
+    color: #2c3e50;
+}
+
+.attribution-item a {
+    color: #3498db;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.attribution-item a:hover {
+    color: #2980b9;
+}
+
+/* Responsive adjustments for enhanced content */
+@media (max-width: 768px) {
+    .game-section {
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    .how-to-play-step {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .step-number {
+        align-self: flex-start;
+    }
+    
+    .goals-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .compatibility-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .pro-tip-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .pro-tip-item i {
+        align-self: flex-start;
+    }
 } 
