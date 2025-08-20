@@ -15,6 +15,22 @@ const gameDescription = document.getElementById('gameDescription');
 const gameTags = document.getElementById('gameTags');
 const relatedGamesGrid = document.getElementById('relatedGamesGrid');
 
+// New DOM elements for enhanced content
+const howToPlaySection = document.getElementById('howToPlaySection');
+const howToPlayList = document.getElementById('howToPlayList');
+const goalsSection = document.getElementById('goalsSection');
+const goalsContent = document.getElementById('goalsContent');
+const levelsSection = document.getElementById('levelsSection');
+const levelsList = document.getElementById('levelsList');
+const proTipsSection = document.getElementById('proTipsSection');
+const proTipsList = document.getElementById('proTipsList');
+const compatibilitySection = document.getElementById('compatibilitySection');
+const compatibilityContent = document.getElementById('compatibilityContent');
+const faqSection = document.getElementById('faqSection');
+const faqList = document.getElementById('faqList');
+const attributionSection = document.getElementById('attributionSection');
+const attributionContent = document.getElementById('attributionContent');
+
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
     initializeGamePage();
@@ -96,6 +112,9 @@ function setupGamePage() {
         tagElement.textContent = instruction;
         gameTags.appendChild(tagElement);
     });
+    
+    // 渲染增强内容
+    renderEnhancedContent();
     
     // 加载相关游戏
     loadRelatedGames();
@@ -321,6 +340,148 @@ function handleKeydown(event) {
 // Return to homepage
 function goBack() {
     window.location.href = 'index.html';
+}
+
+// 渲染增强内容
+function renderEnhancedContent() {
+    // Render How to Play section
+    if (currentGame.howToPlay && currentGame.howToPlay.length > 0) {
+        howToPlayList.innerHTML = '';
+        currentGame.howToPlay.forEach((step, index) => {
+            const stepElement = document.createElement('div');
+            stepElement.className = 'how-to-play-step';
+            stepElement.innerHTML = `
+                <div class="step-number">${index + 1}</div>
+                <div class="step-content">
+                    <h4>${step.step}</h4>
+                    <p>${step.detail}</p>
+                </div>
+            `;
+            howToPlayList.appendChild(stepElement);
+        });
+        howToPlaySection.style.display = 'block';
+    }
+
+    // Render Goals and Scoring section
+    if (currentGame.goalsAndScoring) {
+        goalsContent.innerHTML = `
+            <div class="goal-item">
+                <h4><i class="fas fa-flag-checkered"></i> Win Condition</h4>
+                <p>${currentGame.goalsAndScoring.win}</p>
+            </div>
+            <div class="goal-item">
+                <h4><i class="fas fa-star"></i> Scoring</h4>
+                <p>${currentGame.goalsAndScoring.score}</p>
+            </div>
+        `;
+        goalsSection.style.display = 'block';
+    }
+
+    // Render Levels section
+    if (currentGame.levels && currentGame.levels.length > 0) {
+        levelsList.innerHTML = '';
+        currentGame.levels.forEach((level, index) => {
+            const levelElement = document.createElement('div');
+            levelElement.className = 'level-item';
+            levelElement.innerHTML = `
+                <h4>${level.name}</h4>
+                <p>${level.strategy}</p>
+            `;
+            levelsList.appendChild(levelElement);
+        });
+        levelsSection.style.display = 'block';
+    }
+
+    // Render Pro Tips section
+    if (currentGame.proTips && currentGame.proTips.length > 0) {
+        proTipsList.innerHTML = '';
+        currentGame.proTips.forEach(tip => {
+            const tipElement = document.createElement('div');
+            tipElement.className = 'pro-tip-item';
+            tipElement.innerHTML = `
+                <i class="fas fa-lightbulb"></i>
+                <span>${tip}</span>
+            `;
+            proTipsList.appendChild(tipElement);
+        });
+        proTipsSection.style.display = 'block';
+    }
+
+    // Render Compatibility section
+    if (currentGame.compatibility) {
+        let issuesHtml = '';
+        if (currentGame.compatibility.issues && currentGame.compatibility.issues.length > 0) {
+            issuesHtml = `
+                <div class="compatibility-issues">
+                    <h4>Known Issues:</h4>
+                    <ul>
+                        ${currentGame.compatibility.issues.map(issue => `<li>${issue}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+        
+        compatibilityContent.innerHTML = `
+            <div class="compatibility-info">
+                <div class="compatibility-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span><strong>Mobile:</strong> ${currentGame.compatibility.mobile}</span>
+                </div>
+                <div class="compatibility-item">
+                    <i class="fas fa-desktop"></i>
+                    <span><strong>Desktop:</strong> ${currentGame.compatibility.pc}</span>
+                </div>
+            </div>
+            ${issuesHtml}
+        `;
+        compatibilitySection.style.display = 'block';
+    }
+
+    // Render FAQ section
+    if (currentGame.faq && currentGame.faq.length > 0) {
+        faqList.innerHTML = '';
+        currentGame.faq.forEach(faq => {
+            const faqElement = document.createElement('div');
+            faqElement.className = 'faq-item';
+            faqElement.innerHTML = `
+                <div class="faq-question">
+                    <h4>${faq.q}</h4>
+                </div>
+                <div class="faq-answer">
+                    <p>${faq.a}</p>
+                </div>
+            `;
+            faqList.appendChild(faqElement);
+        });
+        faqSection.style.display = 'block';
+    }
+
+    // Render Attribution section
+    if (currentGame.attribution) {
+        attributionContent.innerHTML = `
+            <div class="attribution-info">
+                <div class="attribution-item">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span><strong>Source:</strong> ${currentGame.attribution.source}</span>
+                </div>
+                ${currentGame.attribution.publisher ? `
+                <div class="attribution-item">
+                    <i class="fas fa-copyright"></i>
+                    <span><strong>Publisher:</strong> ${currentGame.attribution.publisher}</span>
+                </div>
+                ` : ''}
+                ${currentGame.attribution.sourceUrl ? `
+                <div class="attribution-item">
+                    <a href="${currentGame.attribution.sourceUrl}" target="_blank" rel="noopener">
+                        <i class="fas fa-link"></i>
+                        <span>Visit Original Source</span>
+                    </a>
+                </div>
+                ` : ''}
+            </div>
+        `;
+        attributionSection.style.display = 'block';
+    }
 }
 
 // Load related games
