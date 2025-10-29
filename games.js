@@ -111,7 +111,7 @@ window.GAMES = [
     description: "Jump and fly your way through danger in this rhythm-based action platformer! Navigate through impossible levels with perfect timing.",
     category: "geometry-dash",
     thumb: "images/wave-dash.jpg",
-    iframeUrl: "https://www.jopi.com/embed.php?game=geometry-dash",
+    iframeUrl: "https://1games.io/embed/wave-dash",
     tags: ["platformer", "rhythm", "challenging", "music", "geometry","skill"],
     instructions: ["Click or spacebar to jump", "Follow the music rhythm", "Avoid spikes and obstacles", "Practice mode available"],
     rating: 4.7,

@@ -78,6 +78,16 @@ function selectCategory(category) {
         contentTitle.textContent = categoryName;
     }
     
+    // Hide intro section when browsing categories
+    const introSection = document.getElementById('introSection');
+    if (introSection) {
+        if (category === 'trending' && !currentSearchTerm) {
+            introSection.style.display = 'block';
+        } else {
+            introSection.style.display = 'none';
+        }
+    }
+    
     // Filter and display games
     filterAndDisplayGames();
 }
@@ -174,8 +184,18 @@ function filterAndDisplayGames() {
         filteredGames = filteredGames.filter(game =>
             game.title.toLowerCase().includes(currentSearchTerm) ||
             game.description.toLowerCase().includes(currentSearchTerm) ||
-            game.tags.some(tag => tag.toLowerCase().includes(currentSearchTerm))
+            (game.tags && game.tags.some(tag => tag.toLowerCase().includes(currentSearchTerm)))
         );
+    }
+    
+    // Hide intro section when searching
+    const introSection = document.getElementById('introSection');
+    if (introSection) {
+        if (currentSearchTerm || (currentCategory !== 'trending' && currentCategory !== 'all')) {
+            introSection.style.display = 'none';
+        } else if (currentCategory === 'trending') {
+            introSection.style.display = 'block';
+        }
     }
     
     // Update game count

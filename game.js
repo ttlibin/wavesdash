@@ -92,8 +92,33 @@ function initializeGamePage() {
 
 // 设置游戏页面
 function setupGamePage() {
-    // 更新页面标题
-    document.title = `${currentGame.title} - WAVE⚡DASH`;
+    // 更新页面标题和SEO meta标签
+    const gameTitleText = currentGame.seo?.metaTitle || `${currentGame.title} - Play Online Free | WAVE⚡DASH`;
+    const gameDescriptionText = currentGame.seo?.metaDescription || `${currentGame.description} Play ${currentGame.title} online for free on WavesDash - no downloads required!`;
+    const canonicalUrl = currentGame.seo?.canonicalUrl || `https://wavesdash.com/game.html?game=${currentGame.slug || currentGame.id}`;
+    const gameImage = currentGame.thumb ? `https://wavesdash.com/${currentGame.thumb}` : 'https://wavesdash.com/images/wave-dash.jpg';
+    
+    document.title = gameTitleText;
+    
+    // 更新或创建meta标签
+    updateMetaTag('name', 'description', gameDescriptionText);
+    updateMetaTag('name', 'keywords', `${currentGame.title}, ${currentGame.category}, free online games, browser games${currentGame.tags ? ', ' + currentGame.tags.join(', ') : ''}`);
+    updateMetaTag('property', 'og:title', gameTitleText);
+    updateMetaTag('property', 'og:description', gameDescriptionText);
+    updateMetaTag('property', 'og:image', gameImage);
+    updateMetaTag('property', 'og:url', canonicalUrl);
+    updateMetaTag('property', 'twitter:title', gameTitleText);
+    updateMetaTag('property', 'twitter:description', gameDescriptionText);
+    updateMetaTag('property', 'twitter:image', gameImage);
+    
+    // 更新canonical link
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+        canonicalLink = document.createElement('link');
+        canonicalLink.rel = 'canonical';
+        document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.href = canonicalUrl;
     
     // 更新导航栏游戏标题
     gameTitle.textContent = currentGame.title;
@@ -106,18 +131,125 @@ function setupGamePage() {
     
     // 更新游戏操作说明
     gameTags.innerHTML = '';
-    currentGame.instructions.forEach(instruction => {
-        const tagElement = document.createElement('span');
-        tagElement.className = 'game-tag';
-        tagElement.textContent = instruction;
-        gameTags.appendChild(tagElement);
-    });
+    if (currentGame.instructions && currentGame.instructions.length > 0) {
+        currentGame.instructions.forEach(instruction => {
+            const tagElement = document.createElement('span');
+            tagElement.className = 'game-tag';
+            tagElement.textContent = instruction;
+            gameTags.appendChild(tagElement);
+        });
+    }
+    
+    // 添加结构化数据
+    addGameStructuredData();
     
     // 渲染增强内容
     renderEnhancedContent();
     
     // 加载相关游戏
     loadRelatedGames();
+}
+
+// 更新或创建meta标签的辅助函数
+function updateMetaTag(attr, value, content) {
+    let meta = document.querySelector(`meta[${attr}="${value}"]`);
+    if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute(attr, value);
+        document.head.appendChild(meta);
+    }
+    meta.content = content;
+}
+
+// 添加游戏结构化数据
+function addGameStructuredData() {
+    // 移除旧的结构化数据（如果存在）
+    const oldScript = document.querySelector('script#game-structured-data');
+    if (oldScript) {
+        oldScript.remove();
+    }
+    
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": currentGame.title,
+        "description": currentGame.description,
+        "gameLocation": window.location.href,
+        "applicationCategory": "Game",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": currentGame.rating ? {
+            "@type": "AggregateRating",
+            "ratingValue": currentGame.rating,
+            "bestRating": "5",
+            "ratingCount": "1"
+        } : undefined,
+        "genre": currentGame.category || "Game",
+        "gameItem": currentGame.tags || []
+    };
+    
+    if (currentGame.thumb) {
+        structuredData.image = `https://wavesdash.com/${currentGame.thumb}`;
+    }
+    
+    // 移除undefined属性
+    Object.keys(structuredData).forEach(key => {
+        if (structuredData[key] === undefined) {
+            delete structuredData[key];
+        }
+    });
+    
+    const script = document.createElement('script');
+    script.id = 'game-structured-data';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+    
+    // 添加BreadcrumbList结构化数据
+    addBreadcrumbStructuredData();
+}
+
+// 添加面包屑结构化数据
+function addBreadcrumbStructuredData() {
+    const oldBreadcrumb = document.querySelector('script#breadcrumb-structured-data');
+    if (oldBreadcrumb) {
+        oldBreadcrumb.remove();
+    }
+    
+    const breadcrumbData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://wavesdash.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": window.CATEGORY_NAMES[currentGame.category] || currentGame.category,
+                "item": `https://wavesdash.com/?category=${currentGame.category}`
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": currentGame.title,
+                "item": window.location.href
+            }
+        ]
+    };
+    
+    const script = document.createElement('script');
+    script.id = 'breadcrumb-structured-data';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(breadcrumbData);
+    document.head.appendChild(script);
 }
 
 // 设置事件监听器
