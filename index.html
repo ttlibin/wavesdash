@@ -132,6 +132,12 @@
                 </div>
             </div>
             <div class="nav-right">
+                <nav class="nav-links">
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="privacy.html" class="nav-link">Privacy</a>
+                    <a href="terms.html" class="nav-link">Terms</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
                 <button class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -243,37 +249,6 @@
                 </div>
             </header>
 
-            <!-- Introduction Section -->
-            <section class="intro-section" id="introSection">
-                <div class="intro-content">
-                    <h2>Welcome to WAVE⚡DASH - Your Free Online Games Platform</h2>
-                    <p>Discover thousands of free online games at WavesDash! Play the best browser games including Geometry Dash, Match 3 puzzles, action adventures, multiplayer IO games, and more. No downloads or registration required - just click and play!</p>
-                    <div class="intro-features">
-                        <div class="feature-item">
-                            <i class="fas fa-gamepad"></i>
-                            <h3>Thousands of Games</h3>
-                            <p>Browse through hundreds of free online games across 20+ categories</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <h3>Play Anywhere</h3>
-                            <p>All games work perfectly on desktop, tablet, and mobile devices</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <h3>Safe & Secure</h3>
-                            <p>All games are tested and safe to play in your browser</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-rocket"></i>
-                            <h3>No Downloads</h3>
-                            <p>Instant play - no installations or registration needed</p>
-                        </div>
-                    </div>
-                    <p class="intro-description">Whether you're looking for challenging puzzle games, thrilling action adventures, relaxing casual games, or competitive multiplayer experiences, WavesDash has something for everyone. Our curated collection includes popular titles like Geometry Dash series, match-3 games, IO games, and many more. Start playing now and find your next favorite game!</p>
-                </div>
-            </section>
-
             <!-- Games Grid -->
             <div class="games-grid" id="gamesGrid">
                 <!-- Games will be dynamically loaded here -->
@@ -295,6 +270,37 @@
             </div>
         </main>
     </div>
+
+    <!-- Introduction Section -->
+    <section class="intro-section" id="introSection">
+        <div class="intro-content">
+            <h2>Welcome to WAVE⚡DASH - Your Free Online Games Platform</h2>
+            <p>Discover thousands of free online games at WavesDash! Play the best browser games including Geometry Dash, Match 3 puzzles, action adventures, multiplayer IO games, and more. No downloads or registration required - just click and play!</p>
+            <div class="intro-features">
+                <div class="feature-item">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>Thousands of Games</h3>
+                    <p>Browse through hundreds of free online games across 20+ categories</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Play Anywhere</h3>
+                    <p>All games work perfectly on desktop, tablet, and mobile devices</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Safe & Secure</h3>
+                    <p>All games are tested and safe to play in your browser</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-rocket"></i>
+                    <h3>No Downloads</h3>
+                    <p>Instant play - no installations or registration needed</p>
+                </div>
+            </div>
+            <p class="intro-description">Whether you're looking for challenging puzzle games, thrilling action adventures, relaxing casual games, or competitive multiplayer experiences, WavesDash has something for everyone. Our curated collection includes popular titles like Geometry Dash series, match-3 games, IO games, and many more. Start playing now and find your next favorite game!</p>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -342,9 +348,29 @@
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const sidebar = document.querySelector('.sidebar');
+        const navLinks = document.querySelector('.nav-links');
         
-        mobileMenuBtn.addEventListener('click', function() {
-            sidebar.classList.toggle('mobile-hidden');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                // Toggle sidebar
+                if (sidebar) {
+                    sidebar.classList.toggle('mobile-hidden');
+                }
+                // Toggle nav links menu
+                if (navLinks) {
+                    navLinks.classList.toggle('mobile-menu-open');
+                }
+            });
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (navLinks && navLinks.classList.contains('mobile-menu-open')) {
+                if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    navLinks.classList.remove('mobile-menu-open');
+                }
+            }
         });
     </script>
 </body>

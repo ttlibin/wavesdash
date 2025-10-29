@@ -48,7 +48,7 @@ function initializeGamePage() {
     console.log('🔍 URL parameters - slug:', gameSlug, 'id:', gameId);
     
     if (gameSlug) {
-        // Find game by slug (SEO-friendly URL)
+        // Find game by slug (SEO-friendly URL) - priority
         currentGame = window.GAMES.find(game => game.slug === gameSlug);
         console.log('🎯 Found game by slug:', currentGame);
     } else if (gameId) {
@@ -57,15 +57,31 @@ function initializeGamePage() {
         console.log('🎯 Found game by ID:', currentGame);
     }
     
-    // If still no game found, try sessionStorage
+    // If found game from URL, update sessionStorage with latest data
+    if (currentGame) {
+        sessionStorage.setItem('currentGame', JSON.stringify(currentGame));
+        console.log('✅ Updated sessionStorage with latest game data');
+    }
+    
+    // If still no game found, try sessionStorage (fallback only)
     if (!currentGame) {
         const gameData = sessionStorage.getItem('currentGame');
-        console.log('📦 Trying sessionStorage:', gameData);
+        console.log('📦 Trying sessionStorage (fallback):', gameData);
         
         if (gameData) {
             try {
-                currentGame = JSON.parse(gameData);
-                console.log('✅ Successfully parsed game data from sessionStorage:', currentGame);
+                const cachedGame = JSON.parse(gameData);
+                // Try to find the game in GAMES array by ID to get latest data
+                const latestGame = window.GAMES.find(game => game.id === cachedGame.id);
+                if (latestGame) {
+                    currentGame = latestGame;
+                    console.log('✅ Found latest game data in GAMES array:', currentGame);
+                    // Update sessionStorage with latest data
+                    sessionStorage.setItem('currentGame', JSON.stringify(latestGame));
+                } else {
+                    currentGame = cachedGame;
+                    console.log('⚠️ Using cached game data (game not found in GAMES array):', currentGame);
+                }
             } catch (error) {
                 console.error('❌ Failed to parse game data from sessionStorage:', error);
             }

@@ -66,6 +66,15 @@
             <h1 id="gameTitle">Loading Game...</h1>
         </div>
         <div class="game-nav-right">
+            <nav class="nav-links">
+                <a href="about.html" class="nav-link">About</a>
+                <a href="privacy.html" class="nav-link">Privacy</a>
+                <a href="terms.html" class="nav-link">Terms</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button class="mobile-nav-btn" style="display: none;">
+                <i class="fas fa-bars"></i>
+            </button>
             <button class="fullscreen-btn" onclick="toggleFullscreen()">
                 <i class="fas fa-expand"></i>
                 Fullscreen
@@ -211,5 +220,29 @@
     </footer>
 
     <script src="game.js"></script>
+    
+    <script>
+        // Mobile navigation menu toggle for game page
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNavBtn = document.querySelector('.mobile-nav-btn');
+            const navLinks = document.querySelector('.game-nav .nav-links');
+            
+            if (mobileNavBtn && navLinks) {
+                mobileNavBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('mobile-menu-open');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (navLinks.classList.contains('mobile-menu-open')) {
+                        if (!navLinks.contains(e.target) && !mobileNavBtn.contains(e.target)) {
+                            navLinks.classList.remove('mobile-menu-open');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html> 

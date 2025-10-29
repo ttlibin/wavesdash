@@ -78,13 +78,13 @@ function selectCategory(category) {
         contentTitle.textContent = categoryName;
     }
     
-    // Hide intro section when browsing categories
+    // Show/hide intro section when browsing categories (now at bottom of page)
     const introSection = document.getElementById('introSection');
     if (introSection) {
         if (category === 'trending' && !currentSearchTerm) {
-            introSection.style.display = 'block';
+            introSection.classList.remove('hidden');
         } else {
-            introSection.style.display = 'none';
+            introSection.classList.add('hidden');
         }
     }
     
@@ -188,13 +188,13 @@ function filterAndDisplayGames() {
         );
     }
     
-    // Hide intro section when searching
+    // Show/hide intro section when searching (now at bottom of page)
     const introSection = document.getElementById('introSection');
     if (introSection) {
         if (currentSearchTerm || (currentCategory !== 'trending' && currentCategory !== 'all')) {
-            introSection.style.display = 'none';
+            introSection.classList.add('hidden');
         } else if (currentCategory === 'trending') {
-            introSection.style.display = 'block';
+            introSection.classList.remove('hidden');
         }
     }
     
